@@ -7,6 +7,7 @@ return {"nvim-neo-tree/neo-tree.nvim",
         },
     config = function()
  --       vim.keymap.set('n', '<C-b>', ':Neotree filesystem reveal left<CR>')
-       vim.keymap.set('n', '<C-b>', ':Neotree toggle<CR>')
+        vim.keymap.set('n', '<C-b>', ':Neotree toggle<CR>')
+        vim.cmd('Neotree left')
     end
 }

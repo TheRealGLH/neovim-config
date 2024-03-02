@@ -26,6 +26,7 @@ return {
             vim.keymap.set('n', '<space>f', function()
                 vim.lsp.buf.format { async = true }
             end, {})
+            vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, {})
         end
     },
 }

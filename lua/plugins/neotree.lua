@@ -6,6 +6,7 @@ return {"nvim-neo-tree/neo-tree.nvim",
         'MunifTanjim/nui.nvim',
         },
     config = function()
+        hijack_netrw_behavior = "open_default",
  --       vim.keymap.set('n', '<C-b>', ':Neotree filesystem reveal left<CR>')
         vim.keymap.set('n', '<C-b>', ':Neotree toggle<CR>')
         vim.keymap.set('n', '<C-M-b>', ':Neotree toggle position=right source=git_status<CR>')

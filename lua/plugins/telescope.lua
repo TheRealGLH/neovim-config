@@ -9,6 +9,7 @@ return {
                 vim.keymap.set('n', '<C-p>', builtin.find_files, {})
                 -- This requires 'ripgrep'. Make sure to install it!
                 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+                vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { noremap = true, silent = true })
             end
         }
     },

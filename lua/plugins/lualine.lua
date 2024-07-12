@@ -14,6 +14,17 @@ return {
                     'netrw',
                 },
                 globalstatus = true,
+            },
+            sections = {
+                lualine_c = { 'filename',
+                    function()
+                        return require("nvim-treesitter").statusline({
+                            indicator_size = 90,
+                            type_patterns = { "class", "function", "method" },
+                            separator = "  ",
+                        })
+                    end
+                },
             }
         })
     end

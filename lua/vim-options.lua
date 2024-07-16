@@ -6,5 +6,5 @@ vim.cmd("set shiftwidth=4")
 vim.cmd("set number")
 vim.cmd("set mouse=")
 vim.g.mapleader = " "
-vim.opt.mouse = ""
+--vim.opt.mouse = ""
 

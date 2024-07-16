@@ -20,7 +20,7 @@ return {
         end
         dap.adapters.coreclr = {
             type = 'executable',
-            command = jit.os == 'Windows' and 'C:/Programs/netcoredbg/netcoredbg.exe' or '/user/local/bin/netcorebg',
+            command = jit.os == 'Windows' and 'netcoredbg' or '/user/local/bin/netcorebg',
             args = { '--interpreter=vscode' }
         }
         dap.configurations.cs = {

@@ -11,8 +11,8 @@ return {
             },
             preview = {
                 command = 'cat',
-                file_path = 'dashboard-ansi.txt',
-                file_width = 40,
+                file_path = jit.os == 'Windows' and '~/AppData/Local/nvim/dashboard-ansi.txt' or '~/.config/nvim/dashboard-ansi.txt',
+                file_width = 41,
                 file_height = 20,
             },
             config = {

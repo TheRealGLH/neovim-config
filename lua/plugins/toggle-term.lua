@@ -18,6 +18,7 @@ return {
         require('toggleterm').setup {
             open_mapping = [[<c-j>]],
             direction = 'float',
+            insert_mappings = false,
         }
     end
 }

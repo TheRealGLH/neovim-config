@@ -7,6 +7,7 @@ return {
                 disabled_filetypes = {
                     --'neo-tree',
                     --'toggleterm',
+                    'alpha',
                 },
                 ignore_focus = {
                     'neo-tree',

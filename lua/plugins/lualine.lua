@@ -13,6 +13,7 @@ return {
                     'neo-tree',
                     'toggleterm',
                     'netrw',
+                    'TelescopePrompt',
                 },
                 globalstatus = true,
             },

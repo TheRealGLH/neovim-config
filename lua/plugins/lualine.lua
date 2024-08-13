@@ -14,6 +14,8 @@ return {
                     'toggleterm',
                     'netrw',
                     'TelescopePrompt',
+                    'mason',
+                    'lazy',
                 },
                 globalstatus = true,
             },

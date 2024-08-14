@@ -29,10 +29,10 @@ return {
                     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
                     ["<C-f>"] = cmp.mapping.scroll_docs(4),
                     ["<C-Space>"] = cmp.mapping.complete(),
-                    ["<C-k>"] = cmp.mapping(function ()
+                    ["<C-j>"] = cmp.mapping(function ()
                         cmp.select_next_item();
                     end),
-                    ["<C-j>"] = cmp.mapping(function ()
+                    ["<C-k>"] = cmp.mapping(function ()
                         cmp.select_prev_item();
                     end),
                     ["<C-e>"] = cmp.mapping.abort(),

@@ -10,6 +10,7 @@ return {
                 -- This requires 'ripgrep'. Make sure to install it!
                 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
                 vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { noremap = true, silent = true })
+                vim.keymap.set("n", "gr", vim.lsp.buf.references, {  })
             end
         }
     },

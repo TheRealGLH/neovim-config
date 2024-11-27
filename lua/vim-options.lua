@@ -8,3 +8,9 @@ vim.cmd("set mouse=")
 vim.g.mapleader = " "
 --vim.opt.mouse = ""
 vim.keymap.set('n', '<leader>n', ':set number relativenumber!<CR>', {})
+vim.cmd [[
+  highlight Normal guibg=none
+  highlight NonText guibg=none
+  highlight Normal ctermbg=none
+  highlight NonText ctermbg=none
+]]

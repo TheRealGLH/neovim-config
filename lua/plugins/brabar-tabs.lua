@@ -11,6 +11,15 @@ return
             vim.keymap.set('n', '<Tab>', ':BufferNext<CR>')
             vim.keymap.set('n', '<leader><Tab>', ':BufferPrevious<CR>')
             vim.keymap.set('n', '<leader>w', ':BufferClose<CR>')
+                vim.api.nvim_create_autocmd('ColorScheme', {
+                    pattern = 'dracula', -- after dracula loads specificallycallback
+                    callback = function()
+                        vim.api.nvim_set_hl(0,
+                            'BufferTabpageFill', -- or any other hl group
+                            { bg = "none" }
+                        )
+                    end,
+                })
             require 'barbar'.setup {
                 sidebar_filetypes = {
                     -- Use the default values: {event = 'BufWinLeave', text = nil}

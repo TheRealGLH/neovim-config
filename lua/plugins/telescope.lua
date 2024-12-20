@@ -12,10 +12,12 @@ return {
                 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
                 vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { noremap = true, silent = true })
                 vim.keymap.set('n', '<leader>ds', builtin.lsp_document_symbols, {})
+                vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
             end
         },
         opts = {
             defaults = {
+                layout_strategy = "flex",
                 vimgrep_arguments = {
                     "rg",
                     "--color=never",
@@ -25,7 +27,7 @@ return {
                     "--column",
                     "--smart-case",
                     "--trim"
-                }
+                },
             },
             pickers = {
                 lsp_document_symbols = {
@@ -36,6 +38,19 @@ return {
                     theme = "dropdown",
                     prompt_title = false,
                 },
+                live_grep = {
+                    layout_strategy = "vertical",
+                    layout_config = {
+                        vertical = {
+                            size = {
+                                width = "90%",
+                                height = "90%",
+                            },
+                        },
+                    },
+                    prompt_title = false,
+                    preview_title = false,
+                }
             }
         },
     },
@@ -45,7 +60,8 @@ return {
             require("telescope").setup({
                 extensions = {
                     ["ui-select"] = {
-                        require("telescope.themes").get_dropdown {
+                        require("telescope.themes").get_cursor {
+                            prompt_title = false,
                         }
                     }
                 }

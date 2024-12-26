@@ -8,7 +8,7 @@ return {
 
         dashboard.section.buttons.val = {
             dashboard.button("f", "󰈞\tFind file", ":Telescope find_files<CR>"),
-            dashboard.button("r", "󰈞\tFuzzy grep", ":Telescope live_grep<CR>"),
+            dashboard.button("r", "\tFuzzy grep", ":Telescope live_grep<CR>"),
             dashboard.button("g", "\tGit history", ":Telescope git_commits<CR>"),
             dashboard.button("h", "\tMason config", ":Mason<CR>"),
             dashboard.button("l", "󰐱\tLazyVim config", ":Lazy<CR>"),

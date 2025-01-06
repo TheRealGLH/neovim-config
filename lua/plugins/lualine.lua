@@ -18,9 +18,11 @@ return {
                     'lazy',
                 },
                 globalstatus = true,
+                always_show_tabline = false
             },
             sections = {
-                lualine_c = { 'filename',
+                lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
+                lualine_c = { --'filename',
                     function()
                         return require("nvim-treesitter").statusline({
                             indicator_size = 90,
@@ -28,6 +30,11 @@ return {
                             separator = "  ",
                         })
                     end
+                },
+                lualine_x = {},
+                lualine_y = {},
+                lualine_z = {
+                    { 'location', separator = { right = '' }, left_padding = 2 },
                 },
             }
         })

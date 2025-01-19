@@ -13,4 +13,5 @@ vim.cmd [[
   highlight NonText guibg=none
   highlight Normal ctermbg=none
   highlight NonText ctermbg=none
+  set guicursor=n-v-c-sm:block,i-ci-ve:hor35,r-cr-o:hor20
 ]]

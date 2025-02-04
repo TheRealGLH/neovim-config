@@ -7,6 +7,7 @@ vim.cmd("set number relativenumber")
 vim.cmd("set mouse=")
 vim.g.mapleader = " "
 --vim.opt.mouse = ""
+vim.g.health = { style = 'float' }
 vim.keymap.set('n', '<leader>n', ':set number relativenumber!<CR>', {})
 vim.cmd [[
   highlight Normal guibg=none

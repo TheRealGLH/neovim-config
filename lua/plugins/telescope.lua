@@ -10,6 +10,7 @@ return {
                 vim.keymap.set('n', '<leader>p', builtin.find_files, {})
                 -- This requires 'ripgrep'. Make sure to install it!
                 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+                vim.keymap.set('n', '<leader><Tab>', builtin.buffers, {} )
                 vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { noremap = true, silent = true })
                 vim.keymap.set('n', '<leader>ds', builtin.lsp_document_symbols, {})
                 vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
@@ -45,6 +46,18 @@ return {
                             size = {
                                 width = "90%",
                                 height = "90%",
+                            },
+                        },
+                    },
+                    prompt_title = false,
+                    preview_title = false,
+                },
+                buffers = {
+                    theme = "dropdown",
+                    layout_config = {
+                        vertical = {
+                            size = {
+                                width = "90%",
                             },
                         },
                     },

@@ -28,10 +28,10 @@ return {
             vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {})
             vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {})
             --Go to usage/ reference defined in telescope because we use that plugin for the window
-            vim.keymap.set('n', '<space>f', function()
+            vim.keymap.set('n', '<leader>f', function()
                 vim.lsp.buf.format { async = true }
             end, {})
-            vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, {})
+            vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
         end
     },
 }

@@ -7,7 +7,7 @@ return {
             config = function()
                 local builtin = require("telescope.builtin")
                 local themes = require("telescope.themes")
-                vim.keymap.set('n', '<C-p>', builtin.find_files, {})
+                vim.keymap.set('n', '<leader>p', builtin.find_files, {})
                 -- This requires 'ripgrep'. Make sure to install it!
                 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
                 vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { noremap = true, silent = true })

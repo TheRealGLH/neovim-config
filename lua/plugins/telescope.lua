@@ -1,3 +1,4 @@
+local actions = require("telescope.actions")
 return {
     {
         'nvim-telescope/telescope.nvim',
@@ -10,7 +11,7 @@ return {
                 vim.keymap.set('n', '<leader>p', builtin.find_files, {})
                 -- This requires 'ripgrep'. Make sure to install it!
                 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-                vim.keymap.set('n', '<leader><Tab>', builtin.buffers, {} )
+                vim.keymap.set('n', '<leader><Tab>', builtin.buffers, {})
                 vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { noremap = true, silent = true })
                 vim.keymap.set('n', '<leader>ds', builtin.lsp_document_symbols, {})
                 vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
@@ -18,6 +19,13 @@ return {
         },
         opts = {
             defaults = {
+                mappings = {
+                    i = {
+                        ["<esc>"] = actions.close,
+                        ["<C-j>"] =  actions.move_selection_next,
+                        ["<C-k>"] =  actions.move_selection_previous,
+                    }
+                },
                 layout_strategy = "flex",
                 vimgrep_arguments = {
                     "rg",
@@ -38,6 +46,7 @@ return {
                     previewer = false,
                     theme = "dropdown",
                     prompt_title = false,
+                    find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
                 },
                 live_grep = {
                     layout_strategy = "vertical",

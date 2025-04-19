@@ -32,6 +32,7 @@ return {
                 vim.lsp.buf.format { async = true }
             end, {})
             vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
+            vim.keymap.set('n', '<leader>k', vim.diagnostic.open_float, {})
         end
     },
 }

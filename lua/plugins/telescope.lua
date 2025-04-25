@@ -14,6 +14,7 @@ return {
                 vim.keymap.set('n', '<leader><Tab>', builtin.buffers, {})
                 vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { noremap = true, silent = true })
                 vim.keymap.set('n', '<leader>ds', builtin.lsp_document_symbols, {})
+                vim.keymap.set('n', '<leader>dk', builtin.diagnostics, {})
                 vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
             end
         },
@@ -26,6 +27,7 @@ return {
                         ["<C-k>"] =  actions.move_selection_previous,
                     }
                 },
+                preview_title = false,
                 layout_strategy = "flex",
                 vimgrep_arguments = {
                     "rg",
@@ -39,6 +41,12 @@ return {
                 },
             },
             pickers = {
+                diagnostics = {
+                    theme = "ivy",
+                    buff_nr = 0,
+                    previewer = false,
+                    prompt_title = false
+                },
                 lsp_document_symbols = {
                     theme = "ivy",
                 },

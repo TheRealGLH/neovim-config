@@ -9,7 +9,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "ts_ls", "angularls", "html", "jdtls", "csharp_ls", "vuels", "clangd", "rust_analyzer"}
+                ensure_installed = { "lua_ls", "vtsls", "angularls", "html", "jdtls", "csharp_ls", "vuels", "clangd", "rust_analyzer"}
             })
         end
     },
@@ -18,7 +18,7 @@ return {
         config = function()
             local lspconfig = require("lspconfig")
             lspconfig.lua_ls.setup({})
-            lspconfig.ts_ls.setup({})
+            lspconfig.vtsls.setup({})
             lspconfig.csharp_ls.setup({})
             lspconfig.vuels.setup({})
             lspconfig.clangd.setup({})

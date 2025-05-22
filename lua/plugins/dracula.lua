@@ -8,8 +8,13 @@ return {
 
             overrides = {
                 StatusLine = { bg = "none" },
+                MatchParen = { fg = "#FF5555", bg = "#44475A"},
             }
         }
         vim.cmd.colorscheme "dracula"
+        vim.cmd [[
+        highlight MatchParen gui=bold
+        highlight MatchParen cterm=bold
+      ]]
     end
 }

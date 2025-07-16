@@ -1,4 +1,3 @@
-local actions = require("telescope.actions")
 return {
     {
         'nvim-telescope/telescope.nvim',
@@ -18,76 +17,81 @@ return {
                 vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
             end
         },
-        opts = {
-            defaults = {
-                mappings = {
-                    i = {
-                        ["<esc>"] = actions.close,
-                        ["<C-j>"] =  actions.move_selection_next,
-                        ["<C-k>"] =  actions.move_selection_previous,
-                    }
-                },
-                preview_title = false,
-                layout_strategy = "flex",
-                vimgrep_arguments = {
-                    "rg",
-                    "--color=never",
-                    "--no-heading",
-                    "--with-filename",
-                    "--line-number",
-                    "--column",
-                    "--smart-case",
-                    "--trim"
-                },
-            },
-            pickers = {
-                diagnostics = {
-                    theme = "ivy",
-                    buff_nr = 0,
-                    previewer = false,
-                    prompt_title = false
-                },
-                lsp_document_symbols = {
-                    theme = "ivy",
-                },
-                find_files = {
-                    previewer = false,
-                    theme = "dropdown",
-                    prompt_title = false,
-                    find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
-                },
-                live_grep = {
-                    layout_strategy = "vertical",
-                    layout_config = {
-                        vertical = {
-                            size = {
-                                width = "90%",
-                                height = "90%",
-                            },
-                        },
-                    },
-                    prompt_title = false,
-                    preview_title = false,
-                },
-                buffers = {
-                    theme = "dropdown",
-                    layout_config = {
-                        vertical = {
-                            size = {
-                                width = "90%",
-                            },
-                        },
-                    },
+        opts = function()
+            local actions = require("telescope.actions")
+            return {
+                defaults = {
                     mappings = {
                         i = {
-                            ["<C-d>"] =  actions.delete_buffer + actions.move_to_top,
+                            ["<esc>"] = actions.close,
+                            ["<C-j>"] = actions.move_selection_next,
+                            ["<C-k>"] = actions.move_selection_previous,
                         }
                     },
-                    prompt_title = false,
                     preview_title = false,
+                    layout_strategy = "flex",
+                    vimgrep_arguments = {
+                        "rg",
+                        "--color=never",
+                        "--no-heading",
+                        "--with-filename",
+                        "--line-number",
+                        "--column",
+                        "--smart-case",
+                        "--trim"
+                    },
+                },
+                pickers = {
+                    diagnostics = {
+                        theme = "ivy",
+                        buff_nr = 0,
+                        previewer = false,
+                        prompt_title = false
+                    },
+                    lsp_document_symbols = {
+                        theme = "ivy",
+                    },
+                    find_files = {
+                        previewer = false,
+                        theme = "dropdown",
+                        prompt_title = false,
+                        find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+                    },
+                    live_grep = {
+                        layout_strategy = "vertical",
+                        layout_config = {
+                            vertical = {
+                                size = {
+                                    width = "90%",
+                                    height = "90%",
+                                },
+                            },
+                        },
+                        prompt_title = false,
+                        preview_title = false,
+                    },
+                    buffers = {
+                        theme = "dropdown",
+                        layout_config = {
+                            vertical = {
+                                size = {
+                                    width = "90%",
+                                },
+                            },
+                        },
+                        mappings = {
+                            i = {
+                                ["<C-d>"] = function(...)
+                                    return actions.delete_buffer(...) + actions.move_to_top(...)
+                                end,
+                            }
+                        },
+                        prompt_title = false,
+                        preview_title = false,
+                    }
                 }
             }
-        },
+        end,
     },
     {
         'nvim-telescope/telescope-ui-select.nvim',

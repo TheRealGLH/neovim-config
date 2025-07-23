@@ -82,7 +82,7 @@ return {
                         mappings = {
                             i = {
                                 ["<C-d>"] = function(...)
-                                    return actions.delete_buffer(...) + actions.move_to_top(...)
+                                    return require("telescope.actions").delete_buffer(...)
                                 end,
                             }
                         },

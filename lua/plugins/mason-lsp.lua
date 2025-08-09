@@ -23,16 +23,16 @@ return {
             lspconfig.vuels.setup({})
             lspconfig.clangd.setup({})
             lspconfig.rust_analyzer.setup({})
-            vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
-            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-            vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {})
-            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {})
+            vim.keymap.set('n', 'K', vim.lsp.buf.hover, {desc = "LSP buffer hover info"})
+            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {desc = "Go to definition" })
+            vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {desc = "LSP Code Action(s)"})
+            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {desc = "Find implementation"})
             --Go to usage/ reference defined in telescope because we use that plugin for the window
             vim.keymap.set('n', '<leader>f', function()
                 vim.lsp.buf.format { async = true }
-            end, {})
-            vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
-            vim.keymap.set('n', '<leader>k', vim.diagnostic.open_float, {})
+            end, {desc = "Format current buffer"})
+            vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {desc = "Rename under cursor"})
+            vim.keymap.set('n', '<leader>k', vim.diagnostic.open_float, {desc = "Diagnostics under cursor"})
         end
     },
 }

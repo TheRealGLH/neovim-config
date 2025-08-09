@@ -61,7 +61,7 @@ return {
         vim.fn.sign_define('DapLogPoint', { text='', texthl='DapLogPoint', linehl='DapLogPoint', numhl= 'DapLogPoint' })
         vim.fn.sign_define('DapStopped', { text='', texthl='DapStopped', linehl='DapStopped', numhl= 'DapStopped' })
 
-        vim.keymap.set('n', '<Leader>d', dap.toggle_breakpoint, {})
-        vim.keymap.set('n', '<Leader>dc', dap.continue, {})
+        vim.keymap.set('n', '<Leader>d', dap.toggle_breakpoint, { desc="Toggle debug breakpoint"})
+        vim.keymap.set('n', '<Leader>dc', dap.continue, { desc = "Debug continue"})
     end
 }

@@ -10,7 +10,6 @@ vim.g.mapleader = " "
 vim.g.health = { style = 'float' }
 vim.keymap.set('n', '<leader>n', ':set number relativenumber!<CR>', { desc = "Toggle relative/ absolute line numbers" })
 vim.opt.showmode = false
-vim.opt.guicursor = ""
 vim.cmd [[
   highlight Normal guibg=none
   highlight NonText guibg=none

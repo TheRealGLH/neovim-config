@@ -18,12 +18,10 @@ return {
                 automatic_installation = false,
             })
 
-            -- Apply cmp capabilities to ALL LSP servers using wildcard
             vim.lsp.config('*', {
                 capabilities = require('cmp_nvim_lsp').default_capabilities(),
             })
 
-            -- Enable servers (configs are auto-loaded from lsp/*.lua)
             vim.lsp.enable({
                 "lua_ls",
                 "vtsls",
@@ -33,6 +31,14 @@ return {
                 "vuels",
                 "clangd",
                 "rust_analyzer",
+            })
+
+            -- Diagnostic config with virtual_text
+            vim.diagnostic.config({
+                virtual_text = true,
+                signs = true,
+                underline = true,
+                update_in_insert = false,
             })
 
             -- Keymaps
@@ -45,6 +51,10 @@ return {
             end, { desc = "Format buffer" })
             vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = "Rename symbol" })
             vim.keymap.set('n', '<leader>k', vim.diagnostic.open_float, { desc = "Show diagnostics" })
+            vim.keymap.set('n', '<leader>tk', function()
+                local config = vim.diagnostic.config()
+                vim.diagnostic.config({ virtual_text = not config.virtual_text })
+            end, { desc = "Toggle diagnostic virtual text" })
         end
     },
 }

@@ -7,32 +7,44 @@ return {
     },
     {
         "williamboman/mason-lspconfig.nvim",
+        dependencies = {
+            "williamboman/mason.nvim",
+            "hrsh7th/cmp-nvim-lsp",
+        },
         config = function()
+            -- Mason-lspconfig for auto-installing servers
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "vtsls", "angularls", "html", "jdtls", "csharp_ls", "vuels", "clangd", "rust_analyzer"}
+                ensure_installed = { "lua_ls", "vtsls", "html", "jdtls", "csharp_ls", "vuels", "clangd", "rust_analyzer" },
+                automatic_installation = false,
             })
-        end
-    },
-    {
-        "neovim/nvim-lspconfig",
-        config = function()
-            local lspconfig = require("lspconfig")
-            lspconfig.lua_ls.setup({})
-            lspconfig.vtsls.setup({})
-            lspconfig.csharp_ls.setup({})
-            lspconfig.vuels.setup({})
-            lspconfig.clangd.setup({})
-            lspconfig.rust_analyzer.setup({})
-            vim.keymap.set('n', 'K', vim.lsp.buf.hover, {desc = "LSP buffer hover info"})
-            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {desc = "Go to definition" })
-            vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {desc = "LSP Code Action(s)"})
-            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {desc = "Find implementation"})
-            --Go to usage/ reference defined in telescope because we use that plugin for the window
+
+            -- Apply cmp capabilities to ALL LSP servers using wildcard
+            vim.lsp.config('*', {
+                capabilities = require('cmp_nvim_lsp').default_capabilities(),
+            })
+
+            -- Enable servers (configs are auto-loaded from lsp/*.lua)
+            vim.lsp.enable({
+                "lua_ls",
+                "vtsls",
+                "html",
+                "jdtls",
+                "csharp_ls",
+                "vuels",
+                "clangd",
+                "rust_analyzer",
+            })
+
+            -- Keymaps
+            vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "LSP hover info" })
+            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to definition" })
+            vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { desc = "Code action(s)" })
+            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = "Find implementation" })
             vim.keymap.set('n', '<leader>f', function()
-                vim.lsp.buf.format { async = true }
-            end, {desc = "Format current buffer"})
-            vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {desc = "Rename under cursor"})
-            vim.keymap.set('n', '<leader>k', vim.diagnostic.open_float, {desc = "Diagnostics under cursor"})
+                vim.lsp.buf.format({ async = true })
+            end, { desc = "Format buffer" })
+            vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = "Rename symbol" })
+            vim.keymap.set('n', '<leader>k', vim.diagnostic.open_float, { desc = "Show diagnostics" })
         end
     },
 }

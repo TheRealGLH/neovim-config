@@ -1,0 +1,62 @@
+return {
+    {
+        "williamboman/mason.nvim",
+        config = function()
+            require("mason").setup()
+        end
+    },
+    {
+        "williamboman/mason-lspconfig.nvim",
+        dependencies = {
+            "williamboman/mason.nvim"
+        },
+        config = function()
+            require("mason-lspconfig").setup({
+                ensure_installed = { "lua_ls", "vtsls", "angularls", "html", "jdtls", "csharp_ls", "vuels", "clangd", "rust_analyzer"},
+                -- CRITICAL: Disable automatic setup
+                automatic_installation = false,
+                automatic_setup = false,
+            })
+        end
+    },
+    {
+        "neovim/nvim-lspconfig",
+        dependencies = {
+            "williamboman/mason-lspconfig.nvim",
+            "hrsh7th/cmp-nvim-lsp"
+        },
+        config = function()
+            local lspconfig = require("lspconfig")
+            
+            -- Get capabilities from nvim-cmp
+            local capabilities = require('cmp_nvim_lsp').default_capabilities()
+            
+            -- Common config
+            local common_config = {
+                capabilities = capabilities,
+            }
+            
+            -- Manually set up each server (only once)
+            lspconfig.lua_ls.setup(common_config)
+            lspconfig.vtsls.setup(common_config)
+            lspconfig.csharp_ls.setup(common_config)
+            lspconfig.vuels.setup(common_config)
+            lspconfig.clangd.setup(common_config)
+            lspconfig.rust_analyzer.setup(common_config)
+            lspconfig.angularls.setup(common_config)
+            lspconfig.html.setup(common_config)
+            lspconfig.jdtls.setup(common_config)
+            
+            -- Keymaps
+            vim.keymap.set('n', 'K', vim.lsp.buf.hover, {desc = "LSP buffer hover info"})
+            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {desc = "Go to definition" })
+            vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {desc = "LSP Code Action(s)"})
+            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {desc = "Find implementation"})
+            vim.keymap.set('n', '<leader>f', function()
+                vim.lsp.buf.format { async = true }
+            end, {desc = "Format current buffer"})
+            vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {desc = "Rename under cursor"})
+            vim.keymap.set('n', '<leader>k', vim.diagnostic.open_float, {desc = "Diagnostics under cursor"})
+        end
+    },
+}
